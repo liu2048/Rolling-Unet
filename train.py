@@ -11,6 +11,7 @@ import torch.nn as nn
 import torch.optim as optim
 import yaml
 from albumentations.augmentations import transforms
+import albumentations as albu
 from albumentations.core.composition import Compose
 from sklearn.model_selection import train_test_split
 from torch.optim import lr_scheduler
@@ -249,7 +250,8 @@ def main():
 
     train_transform = Compose([
         RandomRotate90(),
-        transforms.Flip(),
+        # transforms.Flip(),
+        albu.Flip(),
         Resize(config['input_h'], config['input_w']),
         transforms.Normalize(),
     ])
